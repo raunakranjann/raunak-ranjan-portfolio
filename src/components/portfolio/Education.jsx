@@ -3,56 +3,82 @@ export default function Education({ isDarkMode }) {
     {
       id: 1,
       institution: "Siwan College of Engineering and Management",
-      location: "Islamia Nagar, Surapur, Siwan, Bihar",
+      location: "Siwan, Bihar",
       degree: "B.Tech in Computer Science and Engineering",
-      duration: "2022 - Expected June 2026",
-      description: "Affiliated with Bihar Engineering University, Patna"
+      duration: "2022 - 2026",
+      description: "Affiliated with Bihar Engineering University (BEU), Patna • Graduated"
     },
     {
       id: 2,
       institution: "Mahaviri Saraswati Vidya Mandir",
-      location: "Vijayhata, Siwan, Bihar",
+      location: "Siwan, Bihar",
       degree: "Class XII (Senior Secondary) - PCM",
       duration: "2020 - 2022",
-      description: "CBSE Board"
+      description: "Central Board of Secondary Education (CBSE)"
     },
     {
       id: 3,
       institution: "Mahaviri Saraswati Vidya Mandir",
-      location: "Vijayhata, Siwan, Bihar",
+      location: "Siwan, Bihar",
       degree: "Class X (Secondary)",
       duration: "2019 - 2020",
-      description: "CBSE Board"
+      description: "Central Board of Secondary Education (CBSE)"
     }
   ];
 
+  const primaryColor = isDarkMode ? "#4da3ff" : "#0056b3";
+  const titleColor = isDarkMode ? "#ffffff" : "#1a202c";
+  const degreeColor = isDarkMode ? "#cbd5e1" : "#4a5568";
+  const descColor = isDarkMode ? "#a1a1aa" : "#64748b";
+
   return (
-    <section id="education" style={{ marginTop: "40px" }}>
-      <h2>Educational Journey</h2>
+    <section id="education" style={{ marginTop: "50px", textAlign: "left" }}>
+      <h2 style={{ fontSize: "1.8rem", marginBottom: "25px", textAlign: "center", color: titleColor }}>
+        Educational Background
+      </h2>
       
-      <div style={{ display: "flex", flexDirection: "column", gap: "25px", marginTop: "20px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "25px", maxWidth: "800px", margin: "0 auto" }}>
         {myEducationalJourney.map((item) => (
-          <div key={item.id} style={{ position: "relative", paddingLeft: "25px", borderLeft: isDarkMode ? "2px solid #4da3ff" : "2px solid #0056b3" }}>
-            <div style={{ position: "absolute", left: "-6px", top: "5px", width: "10px", height: "10px", backgroundColor: isDarkMode ? "#4da3ff" : "#0056b3", borderRadius: "50%" }}></div>
+          <div 
+            key={item.id} 
+            style={{ 
+              position: "relative", 
+              paddingLeft: "28px", 
+              borderLeft: `2px solid ${primaryColor}` 
+            }}
+          >
+            {/* Timeline Indicator Dot */}
+            <div 
+              style={{ 
+                position: "absolute", 
+                left: "-6px", 
+                top: "4px", 
+                width: "10px", 
+                height: "10px", 
+                backgroundColor: primaryColor, 
+                borderRadius: "50%",
+                boxShadow: `0 0 8px ${primaryColor}`
+              }} 
+            />
             
-            {/* 1. Primary Focus: The Institution (Place) */}
-            <h3 style={{ margin: "0 0 5px 0", fontSize: "1.25rem", color: isDarkMode ? "#ffffff" : "#1a202c", fontWeight: "bold" }}>
+            {/* Institution Header */}
+            <h3 style={{ margin: "0 0 4px 0", fontSize: "1.2rem", color: titleColor, fontWeight: "700" }}>
               {item.institution}
             </h3>
             
-            {/* 2. Subline Focus: Highlighting Geography & Timeline */}
-            <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", marginBottom: "6px", fontSize: "0.9rem", fontWeight: "600" }}>
-              <span style={{ color: isDarkMode ? "#4da3ff" : "#0056b3" }}>📍 {item.location}</span>
-              <span style={{ color: isDarkMode ? "#aaa" : "#555" }}>{item.duration}</span>
+            {/* Location & Year Metadata */}
+            <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", marginBottom: "6px", fontSize: "0.88rem", fontWeight: "600" }}>
+              <span style={{ color: primaryColor }}>📍 {item.location}</span>
+              <span style={{ color: isDarkMode ? "#94a3b8" : "#64748b" }}>{item.duration}</span>
             </div>
 
-            {/* 3. Tertiary Focus: The degree title */}
-            <h4 style={{ margin: "0 0 8px 0", fontSize: "1rem", color: isDarkMode ? "#cbd5e1" : "#4a5568", fontWeight: "600", fontStyle: "italic" }}>
+            {/* Degree Title */}
+            <h4 style={{ margin: "0 0 6px 0", fontSize: "0.98rem", color: degreeColor, fontWeight: "600" }}>
               {item.degree}
             </h4>
             
-            {/* 4. Details without any numerical grading indicators */}
-            <p style={{ margin: "0", lineHeight: "1.6", color: isDarkMode ? "#aaaaaa" : "#555555", fontSize: "0.95rem" }}>
+            {/* Board / University Description */}
+            <p style={{ margin: "0", lineHeight: "1.5", color: descColor, fontSize: "0.9rem" }}>
               {item.description}
             </p>
           </div>
